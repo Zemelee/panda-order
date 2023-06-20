@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order.mapper.DishMapper">
+    <select id="getAllDish" resultType="com.example.order.entity.Dish">
+        SELECT *
+        FROM dish
+    </select>
+
+    <select id="dishById" resultType="com.example.order.entity.Dish">
+        select *
+        from dish
+        where dish_id = #{dish_id}
+    </select>
+
+
+    <select id="getDishByName" parameterType="string" resultType="com.example.order.entity.Dish">
+        SELECT *
+        FROM dish
+        WHERE dish_name LIKE CONCAT('%', #{dishName}, '%');
+    </select>
+
+    <delete id="delDish">
+        DELETE
+        FROM dish
+        WHERE dish_id = #{dish_id};
+    </delete>
+
+    <update id="salesPlus" parameterType="integer">
+        update dish
+        set sales = sales + 1
+        where dish_id = #{dish_id};
+    </update>
+    <update id="likesPlus">
+        update dish
+        set likes = likes + 1
+        where dish_id = #{dish_id};
+    </update>
+    <select id="recommend" resultType="com.example.order.entity.Dish">
+        SELECT *
+        FROM dish
+        ORDER BY likes DESC LIMIT 3;
+    </select>
+
+
+    <update id="updateDish" parameterType="com.example.order.entity.Dish">
+        update dish
+        set state = #{state}
+        where dish_id = #{dish_id};
+    </update>
+    <update id="salePlus" parameterType="integer">
+        update dish
+        set sales = sales + #{num}
+        where dish_id = #{dish_id};
+    </update>
+    <insert id="addDish" parameterType="com.example.order.entity.Dish">
+        INSERT INTO dish (dish_name, price, category, description, `state`, picture_url, details)
+        VALUES (#{dishName}, #{price}, #{category}, #{description}, #{state}, #{picurl}, #{details})
+    </insert>
+
+</mapper>

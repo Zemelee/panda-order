@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order.mapper.HistoryMapper">
+    <select id="HistoryById" parameterType="integer" resultType="com.example.order.entity.History">
+        SELECT dish.dish_id,
+               dish.dish_name,
+               dish.price,
+               dish.category,
+               dish.description,
+               dish.state,
+               dish.picture_url,
+               dealRecord.amount,
+               dealRecord.order_time,
+               dealRecord.user_id,
+               user.user_name
+        FROM dealrecord
+                 INNER JOIN user
+                            ON user.user_id = dealRecord.user_id
+                 INNER JOIN dish
+                            ON dealrecord.dish_id = dish.dish_id
+        WHERE dealrecord.user_id = #{user_id};
+    </select>
+
+
+<!--    <select id="AllHistory" resultType="com.example.order.entity.History">-->
+<!--        select * from dealRecord-->
+<!--    </select>-->
+</mapper>

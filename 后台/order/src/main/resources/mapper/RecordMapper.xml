@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order.mapper.RecordMapper">
+    <select id="RecordById" parameterType="integer" resultType="com.example.order.entity.Record">
+        SELECT *
+        FROM dealRecord
+        WHERE dealRecord.user_id = #{user_id};
+    </select>
+
+    <select id="DetailById" parameterType="integer" resultType="com.example.order.entity.RecordDetail">
+        SELECT dealrecord.user_id, dealrecord.amount, dealrecord.order_time, dish.dish_name, dish.price, dish.dish_id
+        FROM dealrecord
+                 INNER JOIN dish
+                            ON dish.dish_id = dealrecord.dish_id
+        WHERE dealrecord.user_id = #{user_id};
+    </select>
+    <select id="AllDetail" resultType="com.example.order.entity.RecordDetail">
+        SELECT dealrecord.user_id,
+               dealrecord.amount,
+               dealrecord.order_time,
+               dish.dish_name,
+               dish.price,
+               dish.dish_id
+        FROM dealrecord
+                 INNER JOIN dish
+                            ON dish.dish_id = dealrecord.dish_id
+    </select>
+
+    <insert id="addRecord" parameterType="com.example.order.entity.Record">
+        INSERT INTO dealrecord (user_id, dish_id, amount, order_time)
+        VALUES (#{user_id}, #{dish_id}, #{amount}, #{order_time});
+    </insert>
+
+    <delete id="delRecord" parameterType="date">
+        delete
+        from dealrecord
+        where order_time = #{order_time}
+    </delete>
+
+</mapper>
