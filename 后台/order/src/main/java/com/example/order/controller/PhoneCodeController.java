@@ -1,6 +1,4 @@
 package com.example.order.controller;
-//LTAI5tPgd3XVNnMfvqp6oJnq  id
-//NQpY99L5MemPNKoq0H1VYmBUdr7bCD  secret
 
 import com.aliyun.tea.*;
 import com.example.order.utils.Response;
