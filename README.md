@@ -12,3 +12,17 @@
 前端：vue、ElementUI、Echarts、微信小程序原生、md5
 
 数据库也在里面，把后台和数据库相关的用户名、密码、版本啥的改成与自己一致的应该就可以运行了
+
+数据加密：
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/48a09851-b370-4082-aa08-58003586df06)
+阿里云短信服务
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/e31c1a52-e54c-4082-8bb6-f56e2ae8c176)
+会员制度
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/8875d0e3-749f-4ebf-b431-9a21ed2cc6ea)
+防止sql注入
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/dc79226f-ffa9-4f4c-b06d-dd034cc05244)
+管理后台日志ip记录
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/8ed11cfb-6eae-403b-be6e-249c6fd2afd8)
+前端实现权限控制
+![图片](https://github.com/Zemelee/panda-order/assets/29793246/011f0bb0-7566-494b-8863-70228363fc6f)
+
