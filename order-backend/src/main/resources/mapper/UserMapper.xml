@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order.mapper.UserMapper">
+    <select id="findAll" resultType="com.example.order.entity.User">
+        SELECT *
+        FROM user
+    </select>
+
+    <select id="userById" resultType="com.example.order.entity.User">
+        select *
+        from user
+        where user_id = #{user_id}
+    </select>
+
+    <select id="userByName" resultType="com.example.order.entity.User">
+        select user_id, user_name, user_pwd, avatarUrl, money, flavor, point
+        from user
+        where user_name = #{name}
+    </select>
+
+    <select id="userLogin" resultType="com.example.order.entity.User">
+        select *
+        from user
+        where user_name = #{name} and user_pwd = #{pwd}
+    </select>
+
+    <update id="consume" parameterType="integer">
+        UPDATE user
+        SET money = money - #{amount}
+        WHERE user_id = #{user_id};
+    </update>
+
+    <update id="recharge" parameterType="integer">
+        UPDATE user
+        SET money = money + #{amount}
+        WHERE user_id = #{user_id};
+
+    </update>
+
+    <update id="updateUser" parameterType="com.example.order.entity.User">
+        UPDATE user
+        SET flavor   = #{flavor},
+            user_pwd = #{pwd}
+        WHERE user_id = #{user_id};
+    </update>
+
+
+    <delete id="deleteUser" parameterType="integer">
+        delete
+        from user
+        where user_id = #{user_id}
+    </delete>
+
+    <update id="updatePoint" parameterType="int">
+        UPDATE user
+        SET point = point + #{point}
+        WHERE user_id = #{user_id};
+    </update>
+
+    <insert id="addUser" parameterType="string">
+        insert into user (user_name)
+        values (#{user_name})
+    </insert>
+</mapper>
